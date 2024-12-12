@@ -1,0 +1,234 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #212121;
+  background-color: #f4f4f4;
+
+  --primary-color: #007BFF;
+  --secondary-color: #0056b3;
+  --error-color: #d9534f;
+  --light-color: #ffffff;
+  --dark-color: #333;
+  --background-color: #f9f9f9;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--light-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendario {
+  background: var(--light-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navegacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.navegacion button {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.navegacion button:hover {
+  background-color: var(--secondary-color);
+}
+
+.navegacion h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--dark-color);
+}
+
+.dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+}
+
+.dia-semana {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+/* Estilo de cada día */
+.dia {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dia:hover {
+  background-color: #e0e0e0;
+}
+
+.dia.evento {
+  background-color: #f9f9f9; /* Fondo opcional para días con eventos */
+}
+
+/* Indicador del evento (punto) */
+.dia .indicador-evento {
+  position: absolute;
+  bottom: 8px; /* Coloca el punto en la parte inferior de la celda */
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+/* Casillas vacías */
+.diaVacio {
+  background-color: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+/* --- Lista de eventos --- */
+.lista-eventos {
+  overflow-y: auto;
+  max-height: 600px;
+  padding: 20px;
+  background: var(--light-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.lista-eventos h3 {
+  font-size: 18px;
+  color: var(--dark-color);
+  margin-bottom: 10px;
+}
+
+.lista-eventos ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-eventos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.lista-eventos li:last-child {
+  border-bottom: none;
+}
+
+.lista-eventos strong {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.lista-eventos .botones {
+  display: flex;
+  gap: 10px;
+}
+
+.lista-eventos button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lista-eventos button:first-of-type {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.lista-eventos button:first-of-type:hover {
+  background-color: var(--secondary-color);
+}
+
+.lista-eventos button:last-of-type {
+  background-color: var(--error-color);
+  color: var(--light-color);
+}
+
+.lista-eventos button:last-of-type:hover {
+  background-color: #a32a2a;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .calendario {
+    margin-bottom: 20px;
+  }
+
+  .dias {
+    gap: 3px;
+  }
+
+  .navegacion button {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .navegacion h2 {
+    font-size: 16px;
+  }
+
+  .lista-eventos ul {
+    padding-left: 10px;
+  }
+
+  .lista-eventos button {
+    font-size: 10px;
+  }
+}
